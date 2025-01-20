@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <algorithm>  // For std::remove
+#include <algorithm>
 
 using namespace std;
 
@@ -96,7 +96,6 @@ public:
         return days;
     }
 
-    // Overload operator== for Rental class to compare objects
     bool operator==(const Rental& other) const {
         return car == other.car && customer == other.customer && days == other.days;
     }
@@ -136,7 +135,6 @@ public:
             }
         }
         if (rentalToRemove != nullptr) {
-            // Now std::remove will work since operator== is defined for Rental
             rentals.erase(std::remove(rentals.begin(), rentals.end(), *rentalToRemove), rentals.end());
         } else {
             cout << "Car was not rented." << endl;
@@ -152,7 +150,7 @@ public:
             cout << "3. Exit" << endl;
             cout << "Enter your choice: ";
             cin >> choice;
-            cin.ignore(); // Consume newline
+            cin.ignore();
 
             if (choice == 1) {
                 cout << "\n== Rent a Car ==\n" << endl;
@@ -174,7 +172,7 @@ public:
                 int rentalDays;
                 cout << "Enter the number of days for rental: ";
                 cin >> rentalDays;
-                cin.ignore(); // Consume newline
+                cin.ignore();
 
                 Customer newCustomer("CUS" + to_string(customers.size() + 1), customerName);
                 addCustomer(newCustomer);
@@ -199,7 +197,7 @@ public:
                     char confirm;
                     cout << "\nConfirm rental (Y/N): ";
                     cin >> confirm;
-                    cin.ignore(); // Consume newline
+                    cin.ignore();
 
                     if (confirm == 'Y' || confirm == 'y') {
                         rentCar(*selectedCar, newCustomer, rentalDays);
@@ -256,7 +254,7 @@ public:
 int main() {
     CarRentalSystem rentalSystem;
 
-    Car car1("C001", "Toyota", "Camry", 60.0); // Different base price per day for each car
+    Car car1("C001", "Toyota", "Camry", 60.0);
     Car car2("C002", "Honda", "Accord", 70.0);
     Car car3("C003", "Mahindra", "Thar", 150.0);
     rentalSystem.addCar(car1);
